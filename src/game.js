@@ -8,6 +8,8 @@ Game = {
     }
   },
 
+  overallSpeed: 10,
+
   width: function () {     return Game.map_grid.width * Game.map_grid.tile.width;  },
   height: function () {     return Game.map_grid.height * Game.map_grid.tile.height;  },
 

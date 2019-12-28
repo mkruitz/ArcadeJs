@@ -23,7 +23,7 @@ Crafty.c('Pad', {
   init: function() {
     this.requires('Actor, Grid, Multiway, Collision')
       .attr({w: Game.map_grid.tile.width * 3, h: Game.map_grid.tile.height / 2 })
-      .multiway(5, {RIGHT_ARROW: 0, LEFT_ARROW: 180})
+      .multiway(10 * Game.overallSpeed, {RIGHT_ARROW: 0, LEFT_ARROW: 180})
       .color('#85144b')
       .at(Game.map_grid.width /4, Game.map_grid.height -2)
       .stopOnSolids();
@@ -35,12 +35,10 @@ Crafty.c('Pad', {
     return this;
   },
 
-  // Stops the movement
   stopMovement: function() {
-    this._speed = 0;
-    if (this._movement) {
-      this.x -= this._movement.x;
-      this.y -= this._movement.y;
+    if (this._motionDelta) {
+      this.x -= this._motionDelta.x;
+      this.y -= this._motionDelta.y;
     }
   }
 });
