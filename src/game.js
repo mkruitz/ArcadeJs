@@ -13,7 +13,7 @@ Game = {
 
   start: function() {
     Crafty.init(Game.width(), Game.height());
-    Crafty.background('rgb(249, 223, 125)');
+    Crafty.background('#DDDDDD');
     Game.createWalls();
 
     Crafty.e('PlayerCharacter');

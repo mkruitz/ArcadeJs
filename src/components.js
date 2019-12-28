@@ -48,6 +48,6 @@ Crafty.c('PlayerCharacter', {
 Crafty.c('Wall', {
   init: function () {
     this.requires('Actor, Color, Grid, Solid')
-      .color('rgb(40, 40, 40)');
+      .color('#111111');
   }
 });
