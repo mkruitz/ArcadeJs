@@ -1,7 +1,7 @@
 Crafty.c('Grid', {
   init: function() {
     this
-      .requires('2D, Canvas')
+      .requires('2D, Canvas, Color')
       .attr({
       w: Game.map_grid.tile.width,
       h: Game.map_grid.tile.height
@@ -16,16 +16,16 @@ Crafty.c('Grid', {
       this.attr({ x: x * Game.map_grid.tile.width, y: y * Game.map_grid.tile.height });
       return this;
     }
-  }
+  },
 });
 
-Crafty.c('PlayerCharacter', {
+Crafty.c('Pad', {
   init: function() {
-    this.requires('2D, Canvas, Actor, Fourway, Color, Collision')
+    this.requires('Actor, Grid, Multiway, Collision')
       .attr({w: Game.map_grid.tile.width * 3, h: Game.map_grid.tile.height / 2 })
-      .fourway(5)
-      .color('rgb(20, 75, 40)')
-      .attr({x: 20, y: 20})
+      .multiway(5, {RIGHT_ARROW: 0, LEFT_ARROW: 180})
+      .color('#85144b')
+      .at(Game.map_grid.width /4, Game.map_grid.height -2)
       .stopOnSolids();
   },
 
@@ -47,7 +47,7 @@ Crafty.c('PlayerCharacter', {
 
 Crafty.c('Wall', {
   init: function () {
-    this.requires('Actor, Color, Grid, Solid')
+    this.requires('Actor, Grid, Solid')
       .color('#111111');
   }
 });

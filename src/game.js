@@ -16,7 +16,7 @@ Game = {
     Crafty.background('#DDDDDD');
     Game.createWalls();
 
-    Crafty.e('PlayerCharacter');
+    Crafty.e('Pad');
   },
 
   createWalls: function() {
