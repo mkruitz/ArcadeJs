@@ -29,7 +29,6 @@ Game = {
         ) {
           // is Edge
           Crafty.e('Wall').at(w, h);
-          console.log('added wall', w, h);
         }
       }
     }
