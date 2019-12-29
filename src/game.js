@@ -51,6 +51,7 @@ Game = {
   createTiles: function() {
     Crafty.e('Tile').at(46,40);
     Crafty.e('Tile').at(50,35);
+    Crafty.e('Tile, Clear').at(44,41).color('blue');
   }
 
 };

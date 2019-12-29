@@ -58,9 +58,26 @@ Crafty.c('Tile', {
   }
 });
 
+Crafty.c('Clear', {
+  init: function () {
+    this.requires('Collision')
+      .clearTile();
+  },
+
+  clearTile: function() {
+    this.onHit('Solid', this.updateState);
+
+    return this;
+  },
+
+  updateState: function(hits) {
+    this.destroy();
+  }
+});
+
 Crafty.c('Ball', {
   init: function() {
-    this.requires('Grid, Collision, Motion')
+    this.requires('Grid, Collision, Motion, Solid')
       .attr({w: Game.map_grid.tile.width, h: Game.map_grid.tile.height })
       .color('#FF4136')
       .at(Game.map_grid.width /2, Game.map_grid.height /2)
