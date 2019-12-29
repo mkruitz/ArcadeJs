@@ -10,9 +10,9 @@ Progress game functionality
 * [x] Wall [surround level]
 * [x] Pad  [1x6]
 * [x] Ball  [1x1 , angle in angle ou, straight line, single speed]
-* [ ] Pid [kill ball]
 * [x] Tile solid [1x2, color, clear never]
 * [x] Tile standard [1x2, color, clear 1 hit]
+* [x] Pid [kill ball]
 
 ## Basic level playStart
 * [ ] Win when all none solid tiles cleared 

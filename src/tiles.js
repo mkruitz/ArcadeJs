@@ -28,6 +28,8 @@ Crafty.c('GenericTile', {
     setType: function (code1, code2) {
         if(code1 === '1') 
           this.requires('Clear'); 
+        if(code1 === '2')
+          this.requires('Pid');      
     }
   });
 
@@ -45,5 +47,22 @@ Crafty.c('Clear', {
   
     updateState: function(hits) {
       this.destroy();
+    }
+  });
+
+Crafty.c('Pid', {
+    init: function () {
+      this.requires('Collision')
+        .ballHit();
+    },
+  
+    ballHit: function() {
+      this.onHit('Solid', this.killBall);
+  
+      return this;
+    },
+  
+    killBall: function(hits) {
+      hits[0].obj.destroy()
     }
   });

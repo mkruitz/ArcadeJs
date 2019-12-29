@@ -70,6 +70,7 @@ Game = {
     Crafty.e('GenericTile').fromCode('210100').at(1+1,1+1);
     Crafty.e('GenericTile').fromCode('210211').at(1+1,3+1);
     Crafty.e('GenericTile').fromCode('120311').at(1+1,4+1); 
+    Crafty.e('GenericTile').fromCode('910020').at(1+1,4+1);
     */
   }
 
