@@ -16,14 +16,22 @@ Game = {
   start: function() {
     Crafty.init(Game.width(), Game.height());
     Crafty.background('#DDDDDD');
+    
+    Game.createLayout(levels.levelDimension)
     Game.createWalls();
+    Game.createTiles(levels.Level2);
 
     Crafty.e('Pad, HorizontalCollision');
     let ball = Crafty.e('Ball');
 
     let v = ball.velocity();
-    v.x = 5 * Game.overallSpeed;
-    v.y = 5 * Game.overallSpeed;
+    v.x = 10 * Game.overallSpeed;
+    v.y = 10 * Game.overallSpeed;
+  },
+
+  createLayout: function(config) {
+    Game.map_grid.width = config.width + 2;
+    Game.map_grid.height = config.height + 2;
   },
 
   createWalls: function() {
@@ -45,5 +53,24 @@ Game = {
           .at(w, h);
       }
     }
+  },
+
+  createTiles: function(level) {
+    for(let h = 0; h < Game.map_grid.height-2; h++) {
+      for(let w = 0; w < Game.map_grid.width-2; w++) {
+        var brick = level[w + (h * (Game.map_grid.width-2))];
+        if (brick != 0)
+        {
+          Crafty.e('GenericTile').fromCode(brick.toString()).at(w+1,h+1)
+        }
+      }
+    }
+
+    /* Tile variants
+    Crafty.e('GenericTile').fromCode('210100').at(1+1,1+1);
+    Crafty.e('GenericTile').fromCode('210211').at(1+1,3+1);
+    Crafty.e('GenericTile').fromCode('120311').at(1+1,4+1); 
+    */
   }
+
 };

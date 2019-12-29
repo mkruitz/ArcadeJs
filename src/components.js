@@ -25,7 +25,7 @@ Crafty.c('Pad', {
       .attr({w: Game.map_grid.tile.width * 3, h: Game.map_grid.tile.height / 2 })
       .multiway(10 * Game.overallSpeed, {RIGHT_ARROW: 0, LEFT_ARROW: 180})
       .color('#85144b')
-      .at(Game.map_grid.width /4, Game.map_grid.height -2)
+      .at(Game.map_grid.width /4, Game.map_grid.height -3)
       .stopOnSolids();
   },
 
@@ -52,7 +52,7 @@ Crafty.c('Wall', {
 
 Crafty.c('Ball', {
   init: function() {
-    this.requires('Grid, Collision, Motion')
+    this.requires('Grid, Collision, Motion, Solid')
       .attr({w: Game.map_grid.tile.width, h: Game.map_grid.tile.height })
       .color('#FF4136')
       .at(Game.map_grid.width /2, Game.map_grid.height /2)

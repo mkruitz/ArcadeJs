@@ -10,9 +10,9 @@ Progress game functionality
 * [x] Wall [surround level]
 * [x] Pad  [1x6]
 * [x] Ball  [1x1 , angle in angle ou, straight line, single speed]
-* [ ] Tile solid [1x2, color, clear never]
-* [ ] Tile standard [1x2, color, clear 1 hit]
 * [ ] Pid [kill ball]
+* [x] Tile solid [1x2, color, clear never]
+* [x] Tile standard [1x2, color, clear 1 hit]
 
 ## Basic level playStart
 * [ ] Win when all none solid tiles cleared 
@@ -22,7 +22,7 @@ Progress game functionality
 ## Play enhanced
 * [ ] Bonus - pid [pid as solid, 5 sec]
 * [ ] Score for tile hit/clear
-* [ ] Level (level definition format and loader)
+* [x] Level (level definition format and loader)
 * [ ] Multi levels
 
 ## Traz levels
@@ -39,8 +39,8 @@ Progress game functionality
 Extend variations after road map introduced first variant
 
 ## Tiles
-* [ ] Solid
-* [ ] Single hit
+* [x] Solid
+* [x] Single hit
 * [ ] Multi hit
 * [ ] Mirror [2x2, change Ball direction]
 * [ ] Large shot special behavior
