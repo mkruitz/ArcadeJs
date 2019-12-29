@@ -1,0 +1,26 @@
+{
+  "name": "takeitfromthere",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "directories": {
+    "lib": "lib"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "serve": "lite-server"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/mkruitz/ArcadeJs.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/mkruitz/ArcadeJs/issues"
+  },
+  "homepage": "https://github.com/mkruitz/ArcadeJs#readme",
+  "devDependencies": {
+    "lite-server": "^2.5.4"
+  }
+}
