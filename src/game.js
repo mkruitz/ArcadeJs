@@ -17,6 +17,7 @@ Game = {
     Crafty.init(Game.width(), Game.height());
     Crafty.background('#DDDDDD');
     Game.createWalls();
+    Game.createTiles();
 
     Crafty.e('Pad, HorizontalCollision');
     let ball = Crafty.e('Ball');
@@ -45,5 +46,11 @@ Game = {
           .at(w, h);
       }
     }
+  },
+
+  createTiles: function() {
+    Crafty.e('Tile').at(46,40);
+    Crafty.e('Tile').at(50,35);
   }
+
 };

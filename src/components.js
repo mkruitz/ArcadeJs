@@ -50,6 +50,14 @@ Crafty.c('Wall', {
   }
 });
 
+Crafty.c('Tile', {
+  init: function () {
+    this.requires('Grid, Solid, HorizontalCollision, HorizontalCollision')
+      .attr({w: Game.map_grid.tile.width * 2, h: Game.map_grid.tile.height })
+      .color('#111111');
+  }
+});
+
 Crafty.c('Ball', {
   init: function() {
     this.requires('Grid, Collision, Motion')
