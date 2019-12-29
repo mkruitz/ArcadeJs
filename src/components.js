@@ -21,7 +21,7 @@ Crafty.c('Grid', {
 
 Crafty.c('Pad', {
   init: function() {
-    this.requires('Actor, Grid, Multiway, Collision')
+    this.requires('Grid, Multiway, Solid, Collision')
       .attr({w: Game.map_grid.tile.width * 3, h: Game.map_grid.tile.height / 2 })
       .multiway(10 * Game.overallSpeed, {RIGHT_ARROW: 0, LEFT_ARROW: 180})
       .color('#85144b')
@@ -45,7 +45,7 @@ Crafty.c('Pad', {
 
 Crafty.c('Wall', {
   init: function () {
-    this.requires('Actor, Grid, Solid')
+    this.requires('Grid, Solid')
       .color('#111111');
   }
 });
