@@ -18,20 +18,31 @@ Game = {
     Crafty.background('#DDDDDD');
     Game.createWalls();
 
-    Crafty.e('Pad');
+    Crafty.e('Pad, HorizontalCollision');
+    let ball = Crafty.e('Ball');
+
+    let v = ball.velocity();
+    v.x = 5 * Game.overallSpeed;
+    v.y = 5 * Game.overallSpeed;
   },
 
   createWalls: function() {
     for(let w = 0; w < Game.map_grid.width; w++) {
       for(let h = 0; h < Game.map_grid.height; h++) {
-        if(
-          w === 0 || w === Game.map_grid.width -1
-          ||
-          h === 0 || h === Game.map_grid.height -1
-        ) {
-          // is Edge
-          Crafty.e('Wall').at(w, h);
+        const verticalWall = w === 0 || w === Game.map_grid.width -1;
+        const horizontalWall = h === 0 || h === Game.map_grid.height -1;
+        if(!horizontalWall && !verticalWall) {
+          continue;
         }
+
+        const wallType = 'Wall'
+          + (horizontalWall ? ', HorizontalCollision': '')
+          + (verticalWall ? ', VerticalCollision': '');
+
+        // is Edge
+        Crafty
+          .e(wallType)
+          .at(w, h);
       }
     }
   }

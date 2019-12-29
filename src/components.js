@@ -49,3 +49,39 @@ Crafty.c('Wall', {
       .color('#111111');
   }
 });
+
+Crafty.c('Ball', {
+  init: function() {
+    this.requires('Grid, Collision, Motion')
+      .attr({w: Game.map_grid.tile.width, h: Game.map_grid.tile.height })
+      .color('#FF4136')
+      .at(Game.map_grid.width /2, Game.map_grid.height /2)
+      .bounceOnSolids();
+  },
+
+  bounceOnSolids: function() {
+    this.onHit('Solid', this.changeDirection);
+
+    return this;
+  },
+
+  changeDirection: function(hits) {
+    let bounceVertical = false;
+    let bounceHorizontal = false;
+
+    for(let i = 0, l = hits.length; i < l; i++) {
+      const hitObj = hits[i].obj;
+      bounceVertical   |= hitObj.has('VerticalCollision');
+      bounceHorizontal |= hitObj.has('HorizontalCollision');
+    }
+
+    const v = this.velocity();
+    if(bounceVertical) {
+      v.x = -v.x;
+    }
+
+    if(bounceHorizontal) {
+      v.y = -v.y;
+    }
+  }
+});
