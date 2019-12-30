@@ -17,18 +17,14 @@ var game_assets = {
 
 Crafty.c('GenericTile', {
     init: function () {
-      this.requires('Grid, Canvas, Solid, HorizontalCollision, HorizontalCollision, tile_single');//.crop(0, 0, Game.map_grid.tile.width * 2,  Game.map_grid.tile.height * 1);
+      this.requires('Grid, Canvas, Solid, HorizontalCollision, HorizontalCollision');
     },
 
     fromCode: function (code) {
-        let width = code[0] *  Game.map_grid.tile.width;
-        let height = code[1] * Game.map_grid.tile.height;
-        let sprite = this.spriteCode(code[2],code[3])
+        this.setType(code[4],code[5]);
 
-        this.setType(code[4],code[5])
-  
+        let sprite = this.spriteCode(code[2],code[3]);
         this.requires(sprite);
-        //this.attr({w: width-1, h: height-1 })
         
         return this;
       },
