@@ -19,7 +19,7 @@ Game = {
     
     Game.createLayout(levels.levelDimension)
     Game.createWalls();
-    Game.createTiles(levels.Level2);
+    Game.createTiles(levels.Level1);
 
     Crafty.e('Pad, HorizontalCollision');
     let ball = Crafty.e('Ball');
@@ -65,13 +65,6 @@ Game = {
         }
       }
     }
-
-    /* Tile variants
-    Crafty.e('GenericTile').fromCode('210100').at(1+1,1+1);
-    Crafty.e('GenericTile').fromCode('210211').at(1+1,3+1);
-    Crafty.e('GenericTile').fromCode('120311').at(1+1,4+1); 
-    Crafty.e('GenericTile').fromCode('910020').at(1+1,4+1);
-    */
   }
 
 };
