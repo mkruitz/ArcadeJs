@@ -15,6 +15,7 @@ Game = {
 
   start: function() {
     Crafty.init(Game.width(), Game.height());
+    Crafty.load(game_assets);
     Crafty.background('#DDDDDD');
     
     Game.createLayout(levels.levelDimension)

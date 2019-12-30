@@ -1,28 +1,47 @@
+var game_assets = {
+    "sprites": {
+      "assets/tile-sprites.png": {
+        tile: 10,
+        tileh: 10,
+        map: {
+          tile_solid: [0, 0, 2, 1],
+          tile_single: [0, 1, 2, 1  ],
+          tile_pid: [0, 2, 2, 1],
+          tile_v_single: [3, 6, 1, 2],
+          tile_mirror: [3, 0, 2, 2],
+          tile_box: [3, 3, 2, 3]
+        }
+      }
+    }
+  };
+
 Crafty.c('GenericTile', {
     init: function () {
-      this.requires('Grid, Solid, HorizontalCollision, HorizontalCollision');
+      this.requires('Grid, Canvas, Solid, HorizontalCollision, HorizontalCollision, tile_single');//.crop(0, 0, Game.map_grid.tile.width * 2,  Game.map_grid.tile.height * 1);
     },
 
     fromCode: function (code) {
-        let width = code[0];
-        let height = code[1];
-        let color = this.colorCode(code[2],code[3])
+        let width = code[0] *  Game.map_grid.tile.width;
+        let height = code[1] * Game.map_grid.tile.height;
+        let sprite = this.spriteCode(code[2],code[3])
 
         this.setType(code[4],code[5])
   
-        this.attr({w: Game.map_grid.tile.width * width, h: Game.map_grid.tile.height * height })
-        this.color(color);
+        this.requires(sprite);
+        //this.attr({w: width-1, h: height-1 })
         
         return this;
       },
 
-    colorCode: function (code1, code2) {
-      if(code2 == 0) return "darkred";
-      if(code2 == 1) return "black";
-      if(code2 == 2) return "blue"; 
-      if(code2 == 3) return "purple";  
+    spriteCode: function (code1, code2) {
+      if(code2 == 0) return "tile_pid";
+      if(code2 == 1) return "tile_solid";
+      if(code2 == 2) return "tile_single"; 
+      if(code2 == 3) return "tile_v_single";  
+      if(code2 == 4) return "tile_mirror";  
+      if(code2 == 5) return "tile_box";  
         
-      return "red";    
+      return "tile_pid";    
     },
 
     setType: function (code1, code2) {
