@@ -14,18 +14,18 @@ Game = {
   height: function () {     return Game.map_grid.height * Game.map_grid.tile.height;  },
 
   start: function() {
+    
+    Game.createLayout(levels.levelDimension)
+    
     Crafty.init(Game.width(), Game.height());
     Crafty.load(game_assets);
     Crafty.background('#DDDDDD');
     
-    Game.createLayout(levels.levelDimension)
     Game.createWalls();
-    Game.createTiles(levels.Level2);
+    Game.createTiles(levels.Level1);
 
-    Crafty.e('Pad, HorizontalCollision');
-    let ball = Crafty.e('Ball');
 
-    let v = ball.velocity();
+    let v = Game.ball.velocity();
     v.x = 10 * Game.overallSpeed;
     v.y = 10 * Game.overallSpeed;
   },
@@ -63,13 +63,18 @@ Game = {
         if (brick != 0)
         {
           let strCode = brick.toString();
-          if (strCode[5] === '9') {
+          if (strCode[5] === '8') {
+            Game.ball = Crafty.e('Ball').at(w+1,h+1);
+          } else if (strCode[5] === '7') {
+            Crafty.e('Bonus').setType(strCode).at(w+1,h+1);
+          } else if (strCode[5] === '9') {
             Crafty.e('Pad, HorizontalCollision').setSize(strCode[3]).at(w+1,h+1);
           }
           else
           {
             Crafty.e('GenericTile').fromCode(strCode).at(w+1,h+1)
           }
+          
         }
       }
     }
