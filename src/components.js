@@ -19,30 +19,6 @@ Crafty.c('Grid', {
   },
 });
 
-Crafty.c('Pad', {
-  init: function() {
-    this.requires('Grid, Multiway, Solid, Collision')
-      .attr({w: Game.map_grid.tile.width * 3, h: Game.map_grid.tile.height / 2 })
-      .multiway(10 * Game.overallSpeed, {RIGHT_ARROW: 0, LEFT_ARROW: 180})
-      .color('#85144b')
-      .at(Game.map_grid.width /4, Game.map_grid.height -3)
-      .stopOnSolids();
-  },
-
-  stopOnSolids: function() {
-    this.onHit('Solid', this.stopMovement);
-
-    return this;
-  },
-
-  stopMovement: function() {
-    if (this._motionDelta) {
-      this.x -= this._motionDelta.x;
-      this.y -= this._motionDelta.y;
-    }
-  }
-});
-
 Crafty.c('Wall', {
   init: function () {
     this.requires('Grid, Solid')

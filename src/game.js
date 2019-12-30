@@ -62,7 +62,14 @@ Game = {
         var brick = level[w + (h * (Game.map_grid.width-2))];
         if (brick != 0)
         {
-          Crafty.e('GenericTile').fromCode(brick.toString()).at(w+1,h+1)
+          let strCode = brick.toString();
+          if (strCode[5] === '9') {
+            Crafty.e('Pad, HorizontalCollision').setSize(strCode[3]).at(w+1,h+1);
+          }
+          else
+          {
+            Crafty.e('GenericTile').fromCode(strCode).at(w+1,h+1)
+          }
         }
       }
     }
