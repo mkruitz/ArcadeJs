@@ -20,7 +20,7 @@ Game = {
     
     Game.createLayout(levels.levelDimension)
     Game.createWalls();
-    Game.createTiles(levels.Level1);
+    Game.createTiles(levels.Level2);
 
     Crafty.e('Pad, HorizontalCollision');
     let ball = Crafty.e('Ball');
