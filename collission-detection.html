@@ -122,11 +122,11 @@
             }
             if(v.y > 0) {
               // Moving Down
-              collisionSides.top = collisionSides.top || thisSides.bottom > hitSides.top;
+              collisionSides.bottom = collisionSides.bottom || thisSides.top < hitSides.bottom;
             }
             else if(v.y < 0) {
               // Moving Up
-              collisionSides.bottom = collisionSides.bottom || thisSides.top < hitSides.bottom;
+              collisionSides.top = collisionSides.top || thisSides.bottom > hitSides.top;
             }
           }
 
