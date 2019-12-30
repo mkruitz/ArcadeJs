@@ -52,9 +52,8 @@ Crafty.c('Wall', {
 
 Crafty.c('Ball', {
   init: function() {
-    this.requires('Grid, Collision, Motion, Solid')
+    this.requires('Grid, Canvas, Collision, Motion, Solid, ball_standard')
       .attr({w: Game.map_grid.tile.width, h: Game.map_grid.tile.height })
-      .color('#FF4136')
       .at(Game.map_grid.width /2, Game.map_grid.height /2)
       .bounceOnSolids();
   },
