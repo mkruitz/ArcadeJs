@@ -25,11 +25,16 @@ Crafty.c('GenericTile', {
 
     setType: function (code1, code2) {
         if(code1 === '1') 
-          this.requires('Clear'); 
+        {
+          this.requires('Clear, ScoreObject'); 
+        }
         if(code1 === '2')
-          this.requires('Pid');      
+          this.requires('Pid');    
     }
   });
+
+Crafty.c('ScoreObject', {
+});
 
 Crafty.c('Clear', {
     init: function () {

@@ -4,10 +4,6 @@ Crafty.defineScene('Level', function(level) {
 });
 
 Level = {
-    state: {
-        bricks_to_clear: 0
-    },
-
     init: function(level) {
         Crafty.scene('Level', level); 
         Level.DetectLevelComplete();
@@ -44,7 +40,6 @@ Level = {
     },
     
     createTiles: function(level) {
-        Level.state.bricks_to_clear = 0;
         for(let h = 0; h < Game.map_grid.height-2; h++) {
           for(let w = 0; w < Game.map_grid.width-2; w++) {
             var brick = level[w + (h * (Game.map_grid.width-2))];
@@ -60,9 +55,6 @@ Level = {
               }
               else
               {
-                if (strCode[5] != '0') {
-                    Level.state.bricks_to_clear += 1;
-                }
                 Crafty.e('GenericTile').fromCode(strCode).at(w+1,h+1)
               }
               
@@ -151,9 +143,9 @@ Level = {
 
     DetectLevelComplete: function() {
         Level.ClearBrickHandler =  Crafty.bind("ClearBrick", function() {
-            Level.state.bricks_to_clear -= 1;
-            console.log("Brick cleared ", Level.state.bricks_to_clear);
-            if(Level.state.bricks_to_clear === 0) {
+            let scoreObjects = Crafty("ScoreObject")
+            
+            if(scoreObjects.length === 0) {
               console.log("Game ended");
               Crafty.unbind(Level.ClearBrickHandler);
               Level.Stop();
