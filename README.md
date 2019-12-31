@@ -85,4 +85,6 @@ npm run serve
 
 * Color: ???
 * Art: https://opengameart.org/
-
+* CraftyJs
+  * [Intro with older version](http://buildnewgames.com/introduction-to-crafty/)
+  * [Beyond the basics](https://code.tutsplus.com/series/crafty-beyond-the-basics--cms-1132)
