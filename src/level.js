@@ -103,6 +103,39 @@ Level = {
               }
           });
     },
+
+    // Reusing Message crashes.
+    ShowMessage2: function(message, action) {
+        Level.Message2 = Crafty.e("2D, DOM, Text, Tween, Delay")
+          .attr({ x: 0, y: Game.height() / 2, w: Game.width() })
+          .text(message)
+          .textColor("#FF0000")
+          .textAlign( 'center')
+          .textFont({
+            size: "15px",
+            weight: "bold"
+          })
+          .delay(
+            function() {
+              this.tween({ alpha: 0.5 }, 1000);
+              this.one("TweenEnd", function() {
+                this.tween({ alpha: 1 }, 1000);
+              });
+            },
+            2000,
+            -1
+          );
+
+        Level.MessageHandle = Crafty.bind("TriggerInputDown", function(data) {
+            if (Level.Message2 && data.name === "GameToggle")
+              {
+                Level.Message2.destroy();
+                Level.Message2 = undefined;
+                Crafty.unbind(Level.MessageHandle2); // can be done with Crafty.One it seems.
+                action();
+              }
+          });
+    },
     
     Start: function() {
         let v = Game.ball.velocity();
@@ -124,7 +157,12 @@ Level = {
               console.log("Game ended");
               Crafty.unbind(Level.ClearBrickHandler);
               Level.Stop();
+              Level.ShowMessage2("Level complete!", Level.LevelStopped);
             }
         });
+    },
+
+    LevelStopped: function() {
+        Crafty.trigger("LevelStopped");
     }
 }

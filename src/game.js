@@ -20,12 +20,20 @@ Game = {
     Crafty.init(Game.width(), Game.height());
     Crafty.load(game_assets);
     Crafty.background('#DDDDDD');
-    
-    Level.init(levels.Level1);
+    Game.handleLevelStopped();
+
+    Level.init(levels.LevelSingleHitComplete);
   },
 
   createLayout: function(config) {
     Game.map_grid.width = config.width + 2;
     Game.map_grid.height = config.height + 2;
+  },
+
+  handleLevelStopped: function() {
+    Crafty.bind("LevelStopped", function() {
+      console.log("Start new level");
+      Level.init(levels.Level1);
+    }); 
   }
 };
