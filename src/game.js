@@ -68,7 +68,7 @@ Game = {
           } else if (strCode[5] === '7') {
             Crafty.e('Bonus').setType(strCode).at(w+1,h+1);
           } else if (strCode[5] === '9') {
-            Crafty.e('Pad, HorizontalCollision').setSize(strCode[3]).at(w+1,h+1);
+            Crafty.e('Pad, HorizontalCollision').setSize(parseInt(strCode[3],10)).at(w+1,h+1);
           }
           else
           {
