@@ -17,12 +17,10 @@ Crafty.c('Ball', {
     const v = this.velocity();
     if(collisionHorVert.vertical) {
       v.x = -v.x;
-      Crafty.trigger("BonusPad", -1);
     }
 
     if(collisionHorVert.horizontal) {
       v.y = -v.y;
-      Crafty.trigger("BonusPad", 1);
     }
   },
 
