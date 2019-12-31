@@ -94,6 +94,36 @@
         },
 
         onCollision: function(hits) {
+          let intersect = { horizontal: false, vertical: false };
+          for(let i = 0, l = hits.length; i < l; i++) {
+            const hitObj = hits[i].obj;
+            const hitIntersect = this.isIntersect(this, hitObj);
+            intersect.horizontal = intersect.horizontal || hitIntersect.horizontal;
+            intersect.vertical = intersect.vertical || hitIntersect.vertical;
+          }
+
+          console.log(intersect);
+        },
+
+        isIntersect: function(a, b) {
+          const aV = a.velocity();
+          const axBefore = a.pos();
+          const ayBefore = a.pos();
+          axBefore._x -= aV.x;
+          ayBefore._y -= aV.y;
+
+          return {
+            horizontal: this.intersectAB(axBefore, b),
+            vertical: this.intersectAB(ayBefore, b)
+          };
+        },
+
+        intersectAB: function (rect, mbr) {
+          return mbr._x < rect._x + rect._w && mbr._x + mbr._w > rect._x &&
+            mbr._y < rect._y + rect._h && mbr._y + mbr._h > rect._y;
+        },
+
+        onCollisionViaSides: function(hits) {
           const thisSides = this.getSides(this);
           const v = this.velocity();
           console.log('--- onCollision ---');
