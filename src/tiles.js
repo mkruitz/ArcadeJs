@@ -45,6 +45,7 @@ Crafty.c('Clear', {
   
     updateState: function(hits) {
       this.destroy();
+      Crafty.trigger("ClearBrick");
     }
   });
 

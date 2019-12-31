@@ -3,14 +3,15 @@ Crafty.defineScene('Level', function(level) {
     Level.createTiles(level)
 });
 
-
-
-
 Level = {
+    state: {
+        bricks_to_clear: 0
+    },
 
     init: function(level) {
         Crafty.scene('Level', level); 
-        Level.Message("Get ready!", Level.StartGame);
+        Level.DetectLevelComplete();
+        Level.ShowMessage("Get ready!", Level.Start);
         Level.activateGameToggle();
     },
 
@@ -40,9 +41,10 @@ Level = {
               .at(w, h);
           }
         }
-      },
+    },
     
-      createTiles: function(level) {
+    createTiles: function(level) {
+        Level.state.bricks_to_clear = 0;
         for(let h = 0; h < Game.map_grid.height-2; h++) {
           for(let w = 0; w < Game.map_grid.width-2; w++) {
             var brick = level[w + (h * (Game.map_grid.width-2))];
@@ -58,15 +60,18 @@ Level = {
               }
               else
               {
+                if (strCode[5] != '0') {
+                    Level.state.bricks_to_clear += 1;
+                }
                 Crafty.e('GenericTile').fromCode(strCode).at(w+1,h+1)
               }
               
             }
           }
         }
-      },
+    },
 
-      Message: function(message, action) {
+    ShowMessage: function(message, action) {
 
         Level.Message = Crafty.e("2D, DOM, Text, Tween, Delay")
           .attr({ x: 0, y: Game.height() / 2, w: Game.width() })
@@ -88,23 +93,38 @@ Level = {
             -1
           );
 
-          Level.MessageHandle = Crafty.bind("TriggerInputDown", function(data) {
+        Level.MessageHandle = Crafty.bind("TriggerInputDown", function(data) {
             if (Level.Message && data.name === "GameToggle")
               {
-                console.log("Handle");
                 Level.Message.destroy();
                 Level.Message = undefined;
                 Crafty.unbind(Level.MessageHandle); // can be done with Crafty.One it seems.
                 action();
               }
-             });
-
-
-        },
+          });
+    },
     
-    StartGame: function(message) {
+    Start: function() {
         let v = Game.ball.velocity();
         v.x = 10 * Game.overallSpeed;
         v.y = 10 * Game.overallSpeed;
+    },
+
+    Stop: function() {
+        let v = Game.ball.velocity();
+        v.x = 0;
+        v.y = 0;
+     },
+
+    DetectLevelComplete: function() {
+        Level.ClearBrickHandler =  Crafty.bind("ClearBrick", function() {
+            Level.state.bricks_to_clear -= 1;
+            console.log("Brick cleared ", Level.state.bricks_to_clear);
+            if(Level.state.bricks_to_clear === 0) {
+              console.log("Game ended");
+              Crafty.unbind(Level.ClearBrickHandler);
+              Level.Stop();
+            }
+        });
     }
 }
