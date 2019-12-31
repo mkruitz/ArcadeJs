@@ -67,6 +67,11 @@ Crafty.c('Pid', {
     },
   
     killBall: function(hits) {
-      hits[0].obj.destroy()
+      console.log('kill');
+      // on destroy doesnot remove entity from registration
+      hits.forEach(hit => { 
+        hit.obj.isActive = false;
+        hit.obj.destroy(); 
+      });
     }
   });

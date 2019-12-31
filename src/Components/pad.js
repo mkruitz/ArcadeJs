@@ -9,7 +9,7 @@ Crafty.c('Pad', {
            if (newSize < 0 ) newSize = 0;
            if (newSize > 3 ) newSize = 3;
            
-           console.log("BonusPad:" + size + " "+ newSize + " " + this.current_pad_size);
+           //console.log("BonusPad:" + size + " "+ newSize + " " + this.current_pad_size);
            this.setSize(newSize);
         });
     },

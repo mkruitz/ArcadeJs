@@ -22,6 +22,7 @@ Game = {
     Crafty.background('#DDDDDD');
     Game.handleLevelStopped();
 
+    Level.life = Crafty.e('Life');
     Level.init(levels.LevelSingleHitComplete);
   },
 

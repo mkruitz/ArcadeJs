@@ -4,6 +4,12 @@ Crafty.c('Ball', {
       .attr({w: Game.map_grid.tile.width, h: Game.map_grid.tile.height })
       .at(Game.map_grid.width /2, Game.map_grid.height /2)
       .bounceOnSolids();
+    Crafty.trigger("BallEvent", "add");
+  },
+
+  remove: function() {
+    console.log("ball removed");
+    Crafty.trigger("BallEvent", "remove");
   },
 
   bounceOnSolids: function() {

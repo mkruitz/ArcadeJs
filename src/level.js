@@ -1,6 +1,7 @@
 Crafty.defineScene('Level', function(level) {
     Level.createWalls();
-    Level.createTiles(level)
+    Level.createTiles(level);
+    Level.setupBallRespawn();
 });
 
 Level = {
@@ -133,13 +134,17 @@ Level = {
         let v = Game.ball.velocity();
         v.x = 10 * Game.overallSpeed;
         v.y = 10 * Game.overallSpeed;
+
+        Level.active = true;
     },
 
     Stop: function() {
+        Level.active = false;
+        
         let v = Game.ball.velocity();
         v.x = 0;
         v.y = 0;
-     },
+       },
 
     DetectLevelComplete: function() {
         Level.ClearBrickHandler =  Crafty.bind("ClearBrick", function() {
@@ -155,6 +160,20 @@ Level = {
     },
 
     LevelStopped: function() {
+        Crafty.unbind(Level.respawnHandler);
         Crafty.trigger("LevelStopped");
+    },
+
+    setupBallRespawn: function() {
+      let ball = Crafty(Crafty("Ball")[0]);
+      Level.RespawnX = ball.gridX
+      Level.RespawnY = ball.gridY;
+
+      Level.respawnHandler =  Crafty.bind("LifeEvent", function(evenType) {
+        if(evenType === "respawn") {
+          Game.ball = Crafty.e('Ball').at(Level.RespawnX, Level.RespawnY);
+          Level.Start();
+        }
+      });
     }
 }
