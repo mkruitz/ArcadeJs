@@ -3,7 +3,9 @@ levels = {
     "widthDoc": "Traz width = 19 X 2 ~> 40", 
     "width": 40, 
     "heightDoc": "Traz heigth 29 ~> 30",
-    "height": 30
+    "height": 30,
+    "TileCode": "width - height - image - image - hitcount/subtype - type ",
+    "TypeCode": "0 - solid, 1 - standard tile, 7 - bonus, 8 - ball, 9 pad "
   },
   "LevelDemoAssets" : [ 
          0,      0,      0,      0,      0,      0,      0,      0,      0,      0,      0,      0,      0,      0,      0,      0,      0,      0,      0,      0,      0,      0,      0,      0,      0,      0,      0,      0,      0,      0,      0,      0,      0,      0,      0,      0,      0,      0,      0,      0,
