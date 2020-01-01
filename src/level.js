@@ -48,7 +48,7 @@ Level = {
             {
               let strCode = brick.toString();
               if (strCode[5] === '8') {
-                Game.ball = Crafty.e('Ball').at(w+1,h+1);
+                Crafty.e('Ball').at(w+1,h+1);
               } else if (strCode[5] === '7') {
                 Crafty.e('Bonus').setType(strCode).at(w+1,h+1);
               } else if (strCode[5] === '9') {
@@ -131,7 +131,7 @@ Level = {
     },
     
     Start: function() {
-        let v = Game.ball.velocity();
+        let v =  Crafty(Crafty("Ball")[0]).velocity();
         v.x = 10 * Game.overallSpeed;
         v.y = 10 * Game.overallSpeed;
 
@@ -141,7 +141,7 @@ Level = {
     Stop: function() {
         Level.active = false;
         
-        let v = Game.ball.velocity();
+        let v = Crafty(Crafty("Ball")[0]).velocity();
         v.x = 0;
         v.y = 0;
        },
@@ -171,8 +171,12 @@ Level = {
 
       Level.respawnHandler =  Crafty.bind("LifeEvent", function(evenType) {
         if(evenType === "respawn") {
-          Game.ball = Crafty.e('Ball').at(Level.RespawnX, Level.RespawnY);
-          Level.Start();
+          console.log("create ball");
+          let b = Crafty.e('Ball').at(Level.RespawnX, Level.RespawnY);
+
+          let v =  b.velocity();
+          v.x = 10 * Game.overallSpeed;
+          v.y = 10 * Game.overallSpeed;
         }
       });
     }

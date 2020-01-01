@@ -9,7 +9,6 @@ Crafty.c('Ball', {
 
   remove: function() {
     console.log("ball removed");
-    Crafty.trigger("BallEvent", "remove");
   },
 
   bounceOnSolids: function() {

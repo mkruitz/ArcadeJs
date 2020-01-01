@@ -68,10 +68,7 @@ Crafty.c('Pid', {
   
     killBall: function(hits) {
       console.log('kill');
-      // on destroy doesnot remove entity from registration
-      hits.forEach(hit => { 
-        hit.obj.isActive = false;
-        hit.obj.destroy(); 
-      });
+      hits[0].obj.destroy(); 
+      Crafty.trigger("BallEvent", "remove");
     }
   });
