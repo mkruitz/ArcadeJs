@@ -8,7 +8,7 @@ Crafty.c('Life', {
     handleBallEvent: function(eventType) {
       console.log("Ball event:" + eventType);
       if (Level.active && eventType == "remove"){
-        let balls = Crafty("Ball")
+        let balls = Crafty("Ball");
         let nofBalls = balls.length;
         if (nofBalls === 0)
         {

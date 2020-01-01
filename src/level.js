@@ -160,7 +160,7 @@ Level = {
     },
 
     LevelStopped: function() {
-        Crafty.unbind(Level.respawnHandler);
+        //Crafty.unbind(Level.respawnHandler);
         Crafty.trigger("LevelStopped");
     },
 
@@ -169,6 +169,8 @@ Level = {
       Level.RespawnX = ball.gridX
       Level.RespawnY = ball.gridY;
 
+
+      if (Level.respawnHandler != undefined) return;
       Level.respawnHandler =  Crafty.bind("LifeEvent", function(evenType) {
         if(evenType === "respawn") {
           console.log("create ball");
