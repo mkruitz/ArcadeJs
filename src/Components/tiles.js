@@ -26,14 +26,15 @@ Crafty.c('GenericTile', {
     setType: function (code1, code2) {
         if(code1 === '1') 
         {
-          this.requires('Clear, ScoreObject'); 
+          this.addComponent('Clear');
+          this.addComponent(GameElement.ScoreObject); 
         }
         if(code1 === '2')
-          this.requires('Pid');    
+          this.requires(GameElement.DeadlyObject);    
     }
   });
 
-Crafty.c('ScoreObject', {
+Crafty.c(GameElement.ScoreObject, {
 });
 
 Crafty.c('Clear', {
@@ -43,32 +44,32 @@ Crafty.c('Clear', {
     },
   
     clearTile: function() {
-      this.onHit('Solid', this.updateState);
+      this.onHit('Solid', this.handleClearTile);
   
       return this;
     },
   
-    updateState: function(hits) {
+    handleClearTile: function(hits) {
       this.destroy();
-      Crafty.trigger("ClearBrick");
+      Crafty.trigger(GameEvent.Score, GameEvent.ScoreObject);
     }
   });
 
-Crafty.c('Pid', {
+Crafty.c(GameElement.DeadlyObject, {
     init: function () {
       this.requires('Collision')
-        .ballHit();
+        .deadlyHit();
     },
   
-    ballHit: function() {
-      this.onHit('Solid', this.killBall);
-  
+    deadlyHit: function() {
+      this.onHit('Solid', this.handleDeadlyHit);
       return this;
     },
   
-    killBall: function(hits) {
+    handleDeadlyHit: function(hits) {
       console.log('kill');
+      let type = hits[0].obj.GameComponentType;
       hits[0].obj.destroy(); 
-      Crafty.trigger("BallEvent", "remove");
+      Crafty.trigger(GameEvent.DeadlyHit, type);
     }
   });

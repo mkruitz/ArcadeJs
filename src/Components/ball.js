@@ -1,14 +1,14 @@
 Crafty.c('Ball', {
   init: function() {
+    this.GameComponentType = "Ball";
     this.requires('Grid, Canvas, Collision, Motion, Solid, ball_standard')
       .attr({w: Game.map_grid.tile.width, h: Game.map_grid.tile.height })
       .at(Game.map_grid.width /2, Game.map_grid.height /2)
       .bounceOnSolids();
-    Crafty.trigger("BallEvent", "add");
   },
 
   remove: function() {
-    console.log("ball removed");
+    console.log("Ball removed");
   },
 
   bounceOnSolids: function() {
