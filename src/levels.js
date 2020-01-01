@@ -13,8 +13,8 @@ levels = {
   "TrazLevels":  ["Level1", "Level2", "Level3"],
 
   "Note2": "Demo mode true to click through levels",
-  "GameDemoMode": "TrazLevels",
-  "GameLevels": "DebugLevels",
+  "GameDemoMode": false,
+  "GameLevels": "TrazLevels",
 
   "Note 3": "TileCodeFormat: width - height - type - subtype - type specific1 - type specific2 ",
   "Note 4": "TileCodeDef: See ElementCode in game-definition for element code for type and subtype", 
