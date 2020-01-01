@@ -119,6 +119,7 @@ LevelUx = {
 }
 
 Level = {
+    demo: false,
     init: function(level) {    
         LevelUx.drawLevel(level);
         this.startLevel();
@@ -127,9 +128,13 @@ Level = {
     startLevel: function() {
       Level.setupBallRespawn();
       Level.detectLevelComplete();
-      LevelUx.showMessage("Get ready!", function() {
+      if (Level.demo){
+        Level.stopLevel(true);
+      } else {
+        LevelUx.showMessage("Get ready!", function() {
           LevelUx.balls(LevelUx.startBall);
         });
+      }
       Level.activateGameToggle();
     },
 

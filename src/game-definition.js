@@ -9,7 +9,7 @@ GameEvent = {
   Score: "Score",
   LifeEvent: "LifeEvent",
   LevelComplete: "LevelComplete" ,
-  LevelFail: "LevelComplete" 
+  LevelFail: "LevelFailed" 
 }
 
 LifeEvent = {

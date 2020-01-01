@@ -25,16 +25,19 @@ Progress game functionality
 * [x] Bonus - pad increase
 * [ ] Score for tile hit/clear
 * [x] Level (level definition format and loader)
-* [ ] Multi levels
+* [x] Multi levels
+* [ ] Vertical pad/pid
 
 #### Traz levels
-* [ ] Pid/pad locations 
-* [ ] Multi pad
-* [ ] Multi pid
+* [x] Pid/pad locations 
+* [x] Multi pad
+* [x] Multi pid
 * [ ] Team Dual player mode
 
 #### Traz game
 * [ ] Navigate levels 
+
+  
 
 # Features
 
@@ -80,6 +83,11 @@ To start developing default node project commands:
 npm install
 npm run serve
 ```
+
+#### Tips & Tricks
+
+Use levels.js file config settings `GameDemoMode` and `GameLevels` to page through levels or set debug level sequence.
+
 
 # Resources used
 

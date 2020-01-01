@@ -6,13 +6,13 @@ Crafty.c('GenericTile', {
     fromCode: function (code) {
         this.setType(code[2],code[3]);
 
-        let sprite = this.spriteCode(code[2],code[3]);
+        let sprite = this.spriteCode(code[2],code[3],code[4]);
         this.requires(sprite);
         
         return this;
       },
 
-    spriteCode: function (type, subType) {
+    spriteCode: function (type, subType, colorCode) {
       if(type === ElementCode.Solid)
       {
         if(subType === ElementCodeSolid.Brick) return "tile_solid";
@@ -24,8 +24,14 @@ Crafty.c('GenericTile', {
       
       if(type === ElementCode.Tile)
       {
-        if(subType === ElementTile.Horizontal) return "tile_single"; 
-        if(subType === ElementTile.Vertical) return "tile_v_single"; 
+        let direction = "x";
+        if(subType === ElementTile.Horizontal) direction = "h"; 
+        if(subType === ElementTile.Vertical) direction = "v"; 
+
+
+        let code = "tile_" + direction + "_single_" + colorCode;
+        console.log(code);
+        return code;
       }
       console.log("UnkownType", type, subType )
     },

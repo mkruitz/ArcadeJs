@@ -24,7 +24,15 @@ Game = {
     Game.handleLevelFailed();
 
     Level.life = Crafty.e('Life');
-    Level.init(levels.LevelSingleHitComplete);
+
+    Level.demo = levels.GameDemoMode;
+    Game.currentLevel = 0;
+
+    Level.init(Game.currentLevelConfig());
+  },
+
+  currentLevelConfig: function() {
+    return levels[levels[levels.GameLevels][Game.currentLevel]];
   },
 
   createLayout: function(config) {
@@ -33,16 +41,24 @@ Game = {
   },
 
   handleLevelCompleted: function() {
-    Crafty.bind("LevelComplete", function() {
+    Crafty.bind(GameEvent.LevelComplete, function() {
       console.log("Start new level");
-      Level.init(levels.Level1);
+      Game.currentLevel += 1;
+
+      if (Game.currentLevel >= levels[levels.GameLevels].length) Game.currentLevel =0;
+
+      Level.init(Game.currentLevelConfig());
     }); 
   },
 
   handleLevelFailed: function() {
-    Crafty.bind("LevelFailed", function() {
+    Crafty.bind(GameEvent.LevelFail, function() {
       console.log("Restart Game");
-      Level.init(levels.Level1);
+      Game.currentLevel = 0;
+      Level.life.destroy();
+      Level.life = Crafty.e('Life');
+
+      Level.init(Game.currentLevelConfig());
     }); 
   }
 };
