@@ -36,11 +36,12 @@ LevelUx = {
           if (brick != 0)
           {
             let strCode = brick.toString();
-            if (strCode[5] === '8') {
+            let type = strCode[2];
+            if (type === ElementCode.Ball) {
               LevelUx.createBall(w+1,h+1);
-            } else if (strCode[5] === '7') {
+            } else if (type === ElementCode.Bonus) {
               Crafty.e('Bonus').setType(strCode).at(w+1,h+1);
-            } else if (strCode[5] === '9') {
+            } else if (type === ElementCode.Pad) {
               Crafty.e('Pad, HorizontalCollision').setSize(parseInt(strCode[3],10)).at(w+1,h+1);
             }
             else

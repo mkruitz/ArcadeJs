@@ -4,7 +4,7 @@ Crafty.c('GenericTile', {
     },
 
     fromCode: function (code) {
-        this.setType(code[4],code[5]);
+        this.setType(code[2],code[3]);
 
         let sprite = this.spriteCode(code[2],code[3]);
         this.requires(sprite);
@@ -12,24 +12,31 @@ Crafty.c('GenericTile', {
         return this;
       },
 
-    spriteCode: function (code1, code2) {
-      if(code2 == 0) return "tile_pid";
-      if(code2 == 1) return "tile_solid";
-      if(code2 == 2) return "tile_single"; 
-      if(code2 == 3) return "tile_v_single";  
-      if(code2 == 4) return "tile_mirror";  
-      if(code2 == 5) return "tile_box";  
-        
-      return "tile_pid";    
+    spriteCode: function (type, subType) {
+      if(type === ElementCode.Solid)
+      {
+        if(subType === ElementCodeSolid.Brick) return "tile_solid";
+        if(subType === ElementCodeSolid.Pid) return "tile_pid";
+        if(subType === ElementCodeSolid.Spacebox) return "tile_box";
+      }
+
+      if(type === ElementCode.Passthrough) return "tile_mirror";  
+      
+      if(type === ElementCode.Tile)
+      {
+        if(subType === ElementTile.Horizontal) return "tile_single"; 
+        if(subType === ElementTile.Vertical) return "tile_v_single"; 
+      }
+      console.log("UnkownType", type, subType )
     },
 
-    setType: function (code1, code2) {
-        if(code1 === '1') 
+    setType: function (type, subType) {
+        if(type === ElementCode.Tile) 
         {
           this.addComponent('Clear');
           this.addComponent(GameElement.ScoreObject); 
         }
-        if(code1 === '2')
+        if(type === ElementCode.Solid && subType === ElementCodeSolid.Pid)
           this.requires(GameElement.DeadlyObject);    
     }
   });
