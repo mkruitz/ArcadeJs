@@ -18,11 +18,11 @@ Progress game functionality
 
 #### Basic level playStart
 * [x] Win when all none solid tiles cleared 
-* [ ] Lives [3 lives, deduct 1 life on ball kill]
+* [x] Lives [3 lives, deduct 1 life on ball kill]
 * [x] Restart
 
 #### Play enhanced
-* [ ] Bonus - pid [pid as solid, 5 sec]
+* [x] Bonus - pad increase
 * [ ] Score for tile hit/clear
 * [x] Level (level definition format and loader)
 * [ ] Multi levels
@@ -48,7 +48,7 @@ Extend variations after road map introduced first variant
 * [ ] Large shot special behavior
 
 #### Ball
-* [ ] Standard movement
+* [x] Standard movement
 * [ ] Avoid stuck (angle correction)
 * [ ] Change angle on pad impact location
 * [ ] Change angle on tile impact location
