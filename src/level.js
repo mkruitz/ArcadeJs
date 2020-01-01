@@ -127,8 +127,8 @@ Level = {
     },
 
     LevelStopped: function() {
-        Crafty.trigger("LevelStopped");
         Crafty.unbind("LifeEvent");
+        Crafty.trigger("LevelComplete");
     },
 
     setupBallRespawn: function() {
@@ -145,6 +145,13 @@ Level = {
           v.x = 10 * Game.overallSpeed;
           v.y = 10 * Game.overallSpeed;
         }
+        if(evenType === "dead") {
+          Level.ShowMessage("Game over!", Level.GameOver);
+        }
       });
+    },
+
+    GameOver: function () { 
+      Crafty.trigger("LevelFailed");
     }
 }

@@ -20,7 +20,8 @@ Game = {
     Crafty.init(Game.width(), Game.height());
     Crafty.load(game_assets);
     Crafty.background('#DDDDDD');
-    Game.handleLevelStopped();
+    Game.handleLevelCompleted();
+    Game.handleLevelFailed();
 
     Level.life = Crafty.e('Life');
     Level.init(levels.LevelSingleHitComplete);
@@ -31,9 +32,16 @@ Game = {
     Game.map_grid.height = config.height + 2;
   },
 
-  handleLevelStopped: function() {
-    Crafty.bind("LevelStopped", function() {
+  handleLevelCompleted: function() {
+    Crafty.bind("LevelComplete", function() {
       console.log("Start new level");
+      Level.init(levels.Level1);
+    }); 
+  },
+
+  handleLevelFailed: function() {
+    Crafty.bind("LevelFailed", function() {
+      console.log("Restart Game");
       Level.init(levels.Level1);
     }); 
   }
