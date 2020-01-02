@@ -4,7 +4,7 @@ A game like [TRAZ](https://en.wikipedia.org/wiki/TRAZ) , which is a [Arkanoid](h
 
 Inspired by https://speedlazer.net/ @ [Github](https://github.com/speedlazer) using [CraftyJS](http://craftyjs.com/) 
 
-This a reboot with [Phaser 3](https://photonstorm.github.io/phaser3-docs/index.html).
+This a reboot with [Phaser 3](https://phaser.io/).
 
 # Road map
 
