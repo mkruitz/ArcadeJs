@@ -10,6 +10,7 @@ export default class Level extends Phaser.Scene
     gameStarted = false;
 
     levelLayout : LevelLayout;
+    cursors;
 
     constructor ()
     {
@@ -26,6 +27,19 @@ export default class Level extends Phaser.Scene
     {
         this.createTiles(Levels.LevelDemoAssets);
         
+
+        this.cursors = this.input.keyboard.createCursorKeys();
+        this.input.on('pointermove', function (pointer) {
+
+            //  Keep the paddle within the game
+            this.paddle.x = Phaser.Math.Clamp(pointer.x, 52, 748);
+
+            if (this.ball.getData('onPaddle'))
+            {
+                this.ball.x = this.paddle.x;
+            }
+
+        }, this);
 
         this.input.keyboard.on('keydown', this.handleGameToggle, this);
         this.input.on('pointerup', this.handleGameToggle, this);
@@ -61,6 +75,32 @@ export default class Level extends Phaser.Scene
             this.gameStarted = true;
             this.ball.setVelocity(-75, -300);
         }
+    }
+
+    handleCursor(cursors) {
+        if (cursors.left.isDown)
+        {
+            this.paddle.setVelocityX(-160);
+        
+            //this.paddle.anims.play('left', true);
+        }
+        else if (cursors.right.isDown)
+        {
+            this.paddle.setVelocityX(160);
+        
+            //this.paddle.anims.play('right', true);
+        }
+        else
+        {
+            this.paddle.setVelocityX(0);
+        
+            //this.paddle.anims.play('turn');
+        }
+    }
+
+    update ()
+    {
+        this.handleCursor(this.cursors);
     }
 }
 
