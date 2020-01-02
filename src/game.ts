@@ -6,6 +6,7 @@ import { ElementCode, ElementCodeSolid, ElementTile } from './level-definition';
 export default class Level extends Phaser.Scene
 {   
     ball;
+    paddle;
     gameStarted = false;
 
     levelLayout : LevelLayout;
@@ -25,7 +26,6 @@ export default class Level extends Phaser.Scene
     {
         this.createTiles(Levels.LevelDemoAssets);
         
-        this.ball = this.physics.add.image(50, 50, 'assets', 'ball').setCollideWorldBounds(true).setBounce(1);  
 
         this.input.keyboard.on('keydown', this.handleGameToggle, this);
         this.input.on('pointerup', this.handleGameToggle, this);
@@ -40,16 +40,15 @@ export default class Level extends Phaser.Scene
               let element = new LevelElements(brick.toString());
 
               if (element.type === ElementCode.Ball) {
-                //LevelUx.createBall(w+1,h+1);
+                this.ball = this.physics.add.image(this.levelLayout.coordX(w), this.levelLayout.coordY(h), 'assets', 'ball').setCollideWorldBounds(true).setBounce(1);  
               } else if (element.type === ElementCode.Bonus) {
-                //Crafty.e('Bonus').setType(strCode).at(w+1,h+1);
+                this.physics.add.image(this.levelLayout.coordX(w), this.levelLayout.coordY(h), 'assets', 'bonus');  
               } else if (element.type === ElementCode.Pad) {
-                //Crafty.e('Pad, HorizontalCollision').setSize(parseInt(strCode[3],10)).at(w+1,h+1);
+                  this.paddle = this.physics.add.image(this.levelLayout.coordX(w), this.levelLayout.coordY(h), 'assets', 'pad_' + element.subType).setImmovable();
               }
               else
               {
-                console.log(w,h, this.levelLayout.coordX(w), this.levelLayout.coordY(h));
-                this.physics.add.image(this.levelLayout.coordX(w), this.levelLayout.coordY(h), 'assets', element.spriteCode()).setCollideWorldBounds(true)
+                this.physics.add.image(this.levelLayout.coordX(w), this.levelLayout.coordY(h), 'assets', element.spriteCode());
               }
               
             }
