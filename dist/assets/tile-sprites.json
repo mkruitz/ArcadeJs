@@ -9,38 +9,6 @@
     	"spriteSourceSize": {"x":0,"y":0,"w":10,"h":10},
     	"sourceSize": {"w":10,"h":10}
     },
-    "blue":
-    { 
-    	"frame": {"x":0,"y":10,"w":20,"h":10},
-    	"rotated": false,
-    	"trimmed": false,
-    	"spriteSourceSize": {"x":0,"y":0,"w":20,"h":10},
-    	"sourceSize": {"w":20,"h":10}
-    },
-    "pid":
-    { 
-    	"frame": {"x":0,"y":20,"w":20,"h":10},
-    	"rotated": false,
-    	"trimmed": false,
-    	"spriteSourceSize": {"x":0,"y":0,"w":20,"h":10},
-    	"sourceSize": {"w":20,"h":10}
-    },
-    "green":
-    { 
-    	"frame": {"x":0,"y":30,"w":20,"h":10},
-    	"rotated": false,
-    	"trimmed": false,
-    	"spriteSourceSize": {"x":0,"y":0,"w":20,"h":10},
-    	"sourceSize": {"w":20,"h":10}
-    },
-    "yellow":
-    { 
-    	"frame": {"x":0,"y":40,"w":20,"h":10},
-    	"rotated": false,
-    	"trimmed": false,
-    	"spriteSourceSize": {"x":0,"y":0,"w":20,"h":10},
-    	"sourceSize": {"w":20,"h":10}
-    },
     "paddle_normal":
     {
     	"frame": {"x":50,"y":40,"w":40,"h":10},
@@ -48,6 +16,78 @@
     	"trimmed": false,
     	"spriteSourceSize": {"x":0,"y":0,"w":40,"h":10},
     	"sourceSize": {"w":40,"h":10}
+    },
+    "tile_pid":
+    { 
+    	"frame": {"x":0,"y":20,"w":20,"h":10},
+    	"rotated": false,
+    	"trimmed": false,
+    	"spriteSourceSize": {"x":0,"y":0,"w":20,"h":10},
+    	"sourceSize": {"w":20,"h":10}
+    },
+    "tile_solid":
+    { 
+    	"frame": {"x":0,"y":0,"w":20,"h":10},
+    	"rotated": false,
+    	"trimmed": false,
+    	"spriteSourceSize": {"x":0,"y":0,"w":20,"h":10},
+    	"sourceSize": {"w":20,"h":10}
+    },
+    "tile_h_single_0":
+    { 
+    	"frame": {"x":0,"y":10,"w":20,"h":10},
+    	"rotated": false,
+    	"trimmed": false,
+    	"spriteSourceSize": {"x":0,"y":0,"w":20,"h":10},
+    	"sourceSize": {"w":20,"h":10}
+    },
+    "tile_h_single_1":
+    { 
+    	"frame": {"x":0,"y":30,"w":20,"h":10},
+    	"rotated": false,
+    	"trimmed": false,
+    	"spriteSourceSize": {"x":0,"y":0,"w":20,"h":10},
+    	"sourceSize": {"w":20,"h":10}
+    },
+    "tile_h_single_2":
+    { 
+    	"frame": {"x":0,"y":40,"w":20,"h":10},
+    	"rotated": false,
+    	"trimmed": false,
+    	"spriteSourceSize": {"x":0,"y":0,"w":20,"h":10},
+    	"sourceSize": {"w":20,"h":10}
+    },
+    "tile_v_single_0":
+    { 
+    	"frame": {"x":30,"y":60,"w":10,"h":20},
+    	"rotated": false,
+    	"trimmed": false,
+    	"spriteSourceSize": {"x":0,"y":0,"w":10,"h":20},
+    	"sourceSize": {"w":10,"h":20}
+    },
+    "tile_v_single_1":
+    { 
+    	"frame": {"x":40,"y":60,"w":10,"h":20},
+    	"rotated": false,
+    	"trimmed": false,
+    	"spriteSourceSize": {"x":0,"y":0,"w":10,"h":20},
+    	"sourceSize": {"w":10,"h":20}
+    },
+    "tile_mirror":
+    { 
+    	"frame": {"x":30,"y":0,"w":20,"h":20},
+    	"rotated": false,
+    	"trimmed": false,
+    	"spriteSourceSize": {"x":0,"y":0,"w":20,"h":20},
+    	"sourceSize": {"w":20,"h":20}
+    },
+    "tile_box":
+    { 
+    	"frame": {"x":30,"y":30,"w":20,"h":30},
+    	"rotated": false,
+    	"trimmed": false,
+    	"spriteSourceSize": {"x":0,"y":0,"w":20,"h":30},
+    	"sourceSize": {"w":20,"h":30}
     }
   }
 }
