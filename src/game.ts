@@ -2,6 +2,8 @@ import 'phaser';
 
 export default class Level extends Phaser.Scene
 {   
+    ball;
+
     constructor ()
     {
         super('Traz - work from there');
@@ -9,10 +11,12 @@ export default class Level extends Phaser.Scene
 
     preload ()
     {
+        this.load.atlas('assets', 'assets/tile-sprites.png', 'assets/tile-sprites.json');
     }
 
     create ()
     {
+        this.ball = this.physics.add.image(400, 500, 'assets', 'ball').setCollideWorldBounds(true).setBounce(1);  
     }
 }
 

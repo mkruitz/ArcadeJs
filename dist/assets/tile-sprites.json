@@ -1,0 +1,53 @@
+{
+  "frames": {
+
+    "ball":
+    {
+    	"frame": {"x":70,"y":10,"w":10,"h":10},
+    	"rotated": false,
+    	"trimmed": false,
+    	"spriteSourceSize": {"x":0,"y":0,"w":10,"h":10},
+    	"sourceSize": {"w":10,"h":10}
+    },
+    "blue":
+    { 
+    	"frame": {"x":0,"y":10,"w":20,"h":10},
+    	"rotated": false,
+    	"trimmed": false,
+    	"spriteSourceSize": {"x":0,"y":0,"w":20,"h":10},
+    	"sourceSize": {"w":20,"h":10}
+    },
+    "pid":
+    { 
+    	"frame": {"x":0,"y":20,"w":20,"h":10},
+    	"rotated": false,
+    	"trimmed": false,
+    	"spriteSourceSize": {"x":0,"y":0,"w":20,"h":10},
+    	"sourceSize": {"w":20,"h":10}
+    },
+    "green":
+    { 
+    	"frame": {"x":0,"y":30,"w":20,"h":10},
+    	"rotated": false,
+    	"trimmed": false,
+    	"spriteSourceSize": {"x":0,"y":0,"w":20,"h":10},
+    	"sourceSize": {"w":20,"h":10}
+    },
+    "yellow":
+    { 
+    	"frame": {"x":0,"y":40,"w":20,"h":10},
+    	"rotated": false,
+    	"trimmed": false,
+    	"spriteSourceSize": {"x":0,"y":0,"w":20,"h":10},
+    	"sourceSize": {"w":20,"h":10}
+    },
+    "paddle_normal":
+    {
+    	"frame": {"x":50,"y":40,"w":40,"h":10},
+    	"rotated": false,
+    	"trimmed": false,
+    	"spriteSourceSize": {"x":0,"y":0,"w":40,"h":10},
+    	"sourceSize": {"w":40,"h":10}
+    }
+  }
+}
