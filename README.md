@@ -11,9 +11,9 @@ This a reboot with [Phaser 3](https://photonstorm.github.io/phaser3-docs/index.h
 Progress game functionality
 
 #### Basic level components
-* [ ] Wall [surround level]
+* [x] Wall [surround level]
 * [ ] Pad  [1x6]
-* [ ] Ball  [1x1 , angle in angle ou, straight line, single speed]
+* [x] Ball  [1x1 , angle in angle out, straight line, single speed]
 * [ ] Tile solid [1x2, color, clear never]
 * [ ] Tile standard [1x2, color, clear 1 hit]
 * [ ] Pid [kill ball]

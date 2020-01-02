@@ -3,6 +3,7 @@ import 'phaser';
 export default class Level extends Phaser.Scene
 {   
     ball;
+    gameStarted = false;
 
     constructor ()
     {
@@ -17,6 +18,18 @@ export default class Level extends Phaser.Scene
     create ()
     {
         this.ball = this.physics.add.image(400, 500, 'assets', 'ball').setCollideWorldBounds(true).setBounce(1);  
+   
+
+        this.input.keyboard.on('keydown', this.handleGameToggle, this);
+
+        this.input.on('pointerup', this.handleGameToggle, this);
+    }
+
+    handleGameToggle() {
+        if(!this.gameStarted){
+            this.gameStarted = true;
+            this.ball.setVelocity(-75, -300);
+        }
     }
 }
 
