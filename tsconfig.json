@@ -1,7 +1,10 @@
 {
     "compilerOptions": {
         "target": "es5",
-        "moduleResolution": "node"
+        "moduleResolution": "node",
+        "sourceMap": true,
+        "inlineSourceMap": true,
+        "inlineSources": true,
     },
     "include": [
         "./src/**/*"
