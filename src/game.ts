@@ -7,6 +7,8 @@ export default class Level extends Phaser.Scene
 {   
     ball;
     paddle;
+    bounceObjects;
+
     gameStarted = false;
 
     levelLayout : LevelLayout;
@@ -25,8 +27,11 @@ export default class Level extends Phaser.Scene
 
     create ()
     {
+        this.bounceObjects = this.physics.add.staticGroup();
+
         this.createTiles(Levels.LevelDemoAssets);
         
+        this.physics.add.collider(this.ball, this.bounceObjects, this.hitBounceObject, null, this);
 
         this.cursors = this.input.keyboard.createCursorKeys();
         this.input.on('pointermove', function (pointer) {
@@ -45,6 +50,10 @@ export default class Level extends Phaser.Scene
         this.input.on('pointerup', this.handleGameToggle, this);
     }
 
+
+    hitBounceObject(ball, BounceObject) {
+        BounceObject.disableBody(true, true);
+    }
     createTiles(level) {
         for(let h = 0; h < this.levelLayout.rows; h++) {
           for(let w = 0; w < this.levelLayout.colums; w++) {
