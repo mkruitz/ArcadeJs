@@ -20,6 +20,8 @@ export class LevelLayout
     height() { return this.rows * this.tile.height;  }
     coordX(x) { return x * this.tile.width;  }
     coordY(y) { return y * this.tile.height;  }
+    midX() { return this.width() /2; }
+    midY() { return this.height() /2; }
 }
 
 export class LevelElement 

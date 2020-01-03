@@ -8,11 +8,13 @@ export default class Level extends Phaser.Scene
     ball;
     paddle;
     bounceObjects;
+    ScoreObjects;
 
     respawnX;
     respawnY;
 
     gameStarted = false;
+    message;
 
     levelLayout : LevelLayout;
     cursors;
@@ -31,11 +33,14 @@ export default class Level extends Phaser.Scene
     create ()
     {
         this.bounceObjects = this.physics.add.staticGroup();
+        this.ScoreObjects = this.physics.add.staticGroup();
 
         this.createTiles(Levels.LevelDemoAssets);
         
         this.physics.add.collider(this.ball, this.bounceObjects, this.hitBounceObject, null, this);
         this.physics.add.collider(this.ball, this.paddle, this.hitPaddle, null, this);
+
+        this.resetBall();
 
         this.cursors = this.input.keyboard.createCursorKeys();
         this.input.on('pointermove', function (pointer) {
@@ -43,10 +48,10 @@ export default class Level extends Phaser.Scene
             //  Keep the paddle within the game
             this.paddle.x = Phaser.Math.Clamp(pointer.x, 52, 748);
 
-            if (this.ball.getData('onPaddle'))
+            /*if (this.ball.getData('onPaddle'))
             {
                 this.ball.x = this.paddle.x;
-            }
+            }*/
 
         }, this);
 
@@ -59,13 +64,15 @@ export default class Level extends Phaser.Scene
         if (bounceObject.getData('isDeadly'))
            this.resetBall();
         if (bounceObject.getData('isRemovable'))
+        {
            bounceObject.disableBody(true, true);
-    }
 
-    hitDeadlyElement(ball, deadlyObject) {
-       
+           if (this.ScoreObjects.countActive() === 0)
+           {
+               this.stopBall("Level Complete");
+           }
+        }
     }
-    
    
     hitPaddle (ball, paddle)
     {
@@ -116,6 +123,7 @@ export default class Level extends Phaser.Scene
                 object.setData('isDeadly', element.isDeadly());
                 object.setData('isRemovable', element.isRemovable());
                 object.setData('isSolid', element.isSolid());
+                if (element.isRemovable()) this.ScoreObjects.add(object);
               }
               
             }
@@ -135,16 +143,25 @@ export default class Level extends Phaser.Scene
 
 
     handleGameToggle() {
-        if(!this.gameStarted){
-            this.gameStarted = true;
-            this.resetBall();
-        }
+        if(this.message) this.message.destroy();
+        this.startBall();
     }
 
     resetBall()
     {
+        this.message = this.add.text(this.levelLayout.midX(), this.levelLayout.midY(), "Get ready!");
         this.ball.setVelocity(0);
-        this.ball.setPosition(this.respawnX ,this.respawnY);
+        this.ball.setPosition(this.respawnX ,this.respawnY)
+    }
+
+    stopBall(msg)
+    {
+        this.message = this.add.text(this.levelLayout.midX(), this.levelLayout.midY(), msg);
+        this.ball.setVelocity(0);
+    }
+
+    startBall()
+    {
         this.ball.setVelocity(-75, -300);
     }
 
