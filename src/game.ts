@@ -9,6 +9,9 @@ export default class Level extends Phaser.Scene
     paddle;
     bounceObjects;
 
+    respawnX;
+    respawnY;
+
     gameStarted = false;
 
     levelLayout : LevelLayout;
@@ -52,9 +55,17 @@ export default class Level extends Phaser.Scene
     }
 
 
-    hitBounceObject(ball, BounceObject) {
-        BounceObject.disableBody(true, true);
+    hitBounceObject(ball, bounceObject) {
+        if (bounceObject.getData('isDeadly'))
+           this.resetBall();
+        if (bounceObject.getData('isRemovable'))
+           bounceObject.disableBody(true, true);
     }
+
+    hitDeadlyElement(ball, deadlyObject) {
+       
+    }
+    
    
     hitPaddle (ball, paddle)
     {
@@ -90,15 +101,21 @@ export default class Level extends Phaser.Scene
 
               if (element.type === ElementCode.Ball) {
                 this.ball = this.physics.add.image(this.levelLayout.coordX(w), this.levelLayout.coordY(h), 'assets', 'ball').setCollideWorldBounds(true).setBounce(1);  
-              } else if (element.type === ElementCode.Bonus) {
+                this.respawnX = this.ball.x;
+                this.respawnY = this.ball.y;
+                   
+            
+            } else if (element.type === ElementCode.Bonus) {
                 this.physics.add.image(this.levelLayout.coordX(w), this.levelLayout.coordY(h), 'assets', 'bonus');  
               } else if (element.type === ElementCode.Pad) {
                   this.paddle = this.physics.add.image(this.levelLayout.coordX(w), this.levelLayout.coordY(h), 'assets', 'pad_' + element.subType).setImmovable();
               }
               else
               {
-                this.addElement(w,h,element);
-               
+                var object = this.addElement(w,h,element);
+                object.setData('isDeadly', element.isDeadly());
+                object.setData('isRemovable', element.isRemovable());
+                object.setData('isSolid', element.isSolid());
               }
               
             }
@@ -108,7 +125,7 @@ export default class Level extends Phaser.Scene
     
     addElement(x,y,element: LevelElement)
     {
-     this.bounceObjects.create(this.levelLayout.coordX(x)+(this.width(element)/2), 
+      return this.bounceObjects.create(this.levelLayout.coordX(x)+(this.width(element)/2), 
                                 this.levelLayout.coordY(y)+(this.height(element)/2), 
                                 'assets', element.spriteCode());
     }
@@ -120,8 +137,15 @@ export default class Level extends Phaser.Scene
     handleGameToggle() {
         if(!this.gameStarted){
             this.gameStarted = true;
-            this.ball.setVelocity(-75, -300);
+            this.resetBall();
         }
+    }
+
+    resetBall()
+    {
+        this.ball.setVelocity(0);
+        this.ball.setPosition(this.respawnX ,this.respawnY);
+        this.ball.setVelocity(-75, -300);
     }
 
     handleCursor(cursors) {

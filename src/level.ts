@@ -63,4 +63,19 @@ export class LevelElement
       }
       console.log("UnkownType", this.type, this.subType );
   }
+
+  isSolid() 
+  {
+    return  this.type === ElementCode.Solid || this.type === ElementCode.Tile;
+  }
+
+  isRemovable() 
+  {
+    return this.type === ElementCode.Tile;
+  }
+  
+  isDeadly() 
+  {
+    return this.type === ElementCode.Solid && this.subType === ElementCodeSolid.Pid;
+  }
 }
