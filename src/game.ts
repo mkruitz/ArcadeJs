@@ -1,7 +1,7 @@
 import 'phaser';
 import { Levels } from './levels';
-import { LevelLayout, LevelElements } from './level';
-import { ElementCode, ElementCodeSolid, ElementTile } from './level-definition';
+import { LevelLayout, LevelElement } from './level';
+import { ElementCode } from './level-definition';
 
 export default class Level extends Phaser.Scene
 {   
@@ -51,7 +51,7 @@ export default class Level extends Phaser.Scene
             var brick = level[w + (h * this.levelLayout.colums)];
             if (brick != 0)
             {
-              let element = new LevelElements(brick.toString());
+              let element = new LevelElement(brick.toString());
 
               if (element.type === ElementCode.Ball) {
                 this.ball = this.physics.add.image(this.levelLayout.coordX(w), this.levelLayout.coordY(h), 'assets', 'ball').setCollideWorldBounds(true).setBounce(1);  
@@ -62,13 +62,25 @@ export default class Level extends Phaser.Scene
               }
               else
               {
-                this.physics.add.image(this.levelLayout.coordX(w), this.levelLayout.coordY(h), 'assets', element.spriteCode());
+                this.addElement(w,h,element);
+               
               }
               
             }
           }
         }
-    }   
+    }  
+    
+    addElement(x,y,element: LevelElement)
+    {
+     this.bounceObjects.create(this.levelLayout.coordX(x)+(this.width(element)/2), 
+                                this.levelLayout.coordY(y)+(this.height(element)/2), 
+                                'assets', element.spriteCode());
+    }
+
+    width(element) { return element.colums * this.levelLayout.tile.width;  }
+    height(element) { return element.rows * this.levelLayout.tile.height;  }
+
 
     handleGameToggle() {
         if(!this.gameStarted){
@@ -108,7 +120,7 @@ const config = {
     type: Phaser.WEBGL,
     backgroundColor: '#125555',
     width: Levels.levelDimension.width * 10,
-    height:  (Levels.levelDimension.height * 10)-4,
+    height:  (Levels.levelDimension.height * 10),
     scene: Level,
     physics: {
         default: 'arcade'

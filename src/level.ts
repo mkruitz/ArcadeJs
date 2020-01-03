@@ -22,20 +22,26 @@ export class LevelLayout
     coordY(y) { return y * this.tile.height;  }
 }
 
-export class LevelElements 
+export class LevelElement 
 {
+  colums : integer;
+  rows : integer;
   type;
   subType;
   colorCode;
+  count;
   
   constructor(code) {
+    this.colums = parseInt(code[0],10);
+    this.rows = parseInt(code[1],10);
     this.type = code[2];
     this.subType = code[3];
     this.colorCode = code[4];
+    this.count = code[5];
   }
-
-   spriteCode() 
-   {
+  
+  spriteCode() 
+  {
       if(this.type === ElementCode.Solid)
       {
         if(this.subType === ElementCodeSolid.Brick) return "tile_solid";
@@ -53,9 +59,8 @@ export class LevelElements
   
   
         let code = "tile_" + direction + "_single_" + this.colorCode;
-        console.log(code);
         return code;
       }
-      console.log("UnkownType", this.type, this.subType )
+      console.log("UnkownType", this.type, this.subType );
   }
 }
