@@ -190,7 +190,7 @@ export class Level extends Phaser.Scene
     updateLives(lives)
     {
         this.Lives = lives;
-        if (!this.StatusText) this.StatusText = this.add.text(this.levelLayout.width() -100 , 20, '', { font: '16px Courier', fill: '#00ff00' });
+        if (!this.StatusText) this.StatusText = this.add.text(this.levelLayout.width() -100 , 10, '', { font: '16px Courier', fill: '#00ff00' });
         this.StatusText.setText(["Lives:" + this.Lives]);
     }
 
