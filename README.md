@@ -20,8 +20,8 @@ Progress game functionality
 
 #### Basic level playStart
 * [x] Win when all none solid tiles cleared 
-* [ ] Lives [3 lives, deduct 1 life on ball kill]
-* [ ] Restart
+* [x] Lives [3 lives, deduct 1 life on ball kill]
+* [x] Restart
 
 #### Play enhanced
 * [ ] Bonus - pad increase
