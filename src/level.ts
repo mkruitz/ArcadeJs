@@ -51,15 +51,9 @@ export class Level extends Phaser.Scene
 
         this.cursors = this.input.keyboard.createCursorKeys();
         this.input.on('pointermove', function (pointer) {
-
             //  Keep the paddle within the game
-            this.paddle.x = Phaser.Math.Clamp(pointer.x, 52, 748);
-
-            /*if (this.ball.getData('onPaddle'))
-            {
-                this.ball.x = this.paddle.x;
-            }*/
-
+            let halfPadWidth = this.paddle.width /2
+            this.paddle.x = Phaser.Math.Clamp(pointer.x, 0 + halfPadWidth, this.levelLayout.width() - halfPadWidth);
         }, this);
 
         this.input.keyboard.on('keydown', this.handleGameToggle, this);
