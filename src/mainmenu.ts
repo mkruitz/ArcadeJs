@@ -18,7 +18,7 @@ export class MainMenu extends Phaser.Scene {
         
         title.setInteractive();
 
-        title.once('pointerup', function () {
+        title.once('pointerup', function (this: MainMenu) {
             this.scene.start('level');
         }, this);
     }
@@ -46,7 +46,7 @@ export class GameOver extends Phaser.Scene {
         
         title.setInteractive();
 
-        title.once('pointerup', function () {
+        title.once('pointerup', function (this: GameOver) {
              this.scene.start('level');
         }, this);
     }

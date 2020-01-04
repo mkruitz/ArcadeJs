@@ -6,7 +6,7 @@ import { Levels } from './levels';
 namespace App {
 
     // game
-    export let game: Phaser.Game = null;
+    export let game: Phaser.Game;
 }
 
 // -------------------------------------------------------------------------
