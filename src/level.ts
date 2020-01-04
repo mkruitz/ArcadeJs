@@ -56,7 +56,8 @@ export class Level extends Phaser.Scene
             this.paddle.x = Phaser.Math.Clamp(pointer.x, 0 + halfPadWidth, this.levelLayout.width() - halfPadWidth);
         }, this);
 
-        this.input.keyboard.on('keydown', this.handleGameToggle, this);
+        var spaceBar = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.SPACE);
+        spaceBar.on('up',  this.handleGameToggle, this)
         this.input.on('pointerup', this.handleGameToggle, this);
     }
 
@@ -156,7 +157,8 @@ export class Level extends Phaser.Scene
     height(element) { return element.rows * this.levelLayout.tile.height;  }
 
 
-    handleGameToggle() {
+    handleGameToggle(key) {
+        console.log(key);
         if(this.gameFailed) 
         {
             this.scene.start('gameover');
