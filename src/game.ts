@@ -1,9 +1,9 @@
 import 'phaser';
-import { LevelLayout } from './level-configuration';
+import { LevelLayout } from './level/level-layout';
 
-import { MainMenu, GameOver } from './mainmenu';
-import { Level } from './level';
-import { Levels } from './levels';
+import { MainMenu, GameOver } from './scenes/mainmenu';
+import { Level } from './scenes/level';
+import { Levels } from './level/levels';
 
 export class Game extends Phaser.Game {
 

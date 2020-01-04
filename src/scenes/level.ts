@@ -1,6 +1,6 @@
-import { Levels } from './levels';
-import { LevelLayout, LevelElement } from './level-configuration';
-import { ElementCode } from './level-definition';
+import { LevelLayout } from '../level/level-layout';
+import { ElementCode, LevelElement } from '../level/level-element';
+import { Levels } from '../level/levels';
 
 export class Level extends Phaser.Scene
 {   
