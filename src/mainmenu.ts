@@ -14,7 +14,7 @@ export class MainMenu extends Phaser.Scene {
     create () {
         console.log('%c mainmenu ', 'background: green; color: white; display: block;');
 
-        let title = this.add.dynamicBitmapText(90, 90, 'ice', 'Traz', 80)
+        let title = this.add.dynamicBitmapText(15, 90, 'ice', 'ReTrazed', 80)
         
         title.setInteractive();
 
@@ -42,7 +42,7 @@ export class GameOver extends Phaser.Scene {
 
         console.log('%c gameover ', 'background: green; color: white; display: block;');
 
-        let title = this.add.dynamicBitmapText(90, 90, 'ice', 'Traz', 80)
+        let title = this.add.dynamicBitmapText(10, 90, 'ice', 'ReTrazed', 80)
         
         title.setInteractive();
 
