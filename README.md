@@ -2,7 +2,9 @@
 
 A game like [TRAZ](https://en.wikipedia.org/wiki/TRAZ) , which is a [Arkanoid](https://nl.wikipedia.org/wiki/Arkanoid) clone.
 
-Using [CraftyJS](http://craftyjs.com/) inspired by https://speedlazer.net/ @ [Github](https://github.com/speedlazer)
+Inspired by https://speedlazer.net/ @ [Github](https://github.com/speedlazer) using [CraftyJS](http://craftyjs.com/) 
+
+This a reboot with [Phaser 3](https://phaser.io/).
 
 # Road map
 
@@ -11,7 +13,7 @@ Progress game functionality
 #### Basic level components
 * [x] Wall [surround level]
 * [x] Pad  [1x6]
-* [x] Ball  [1x1 , angle in angle ou, straight line, single speed]
+* [x] Ball  [1x1 , angle in angle out, straight line, single speed]
 * [x] Tile solid [1x2, color, clear never]
 * [x] Tile standard [1x2, color, clear 1 hit]
 * [x] Pid [kill ball]
@@ -22,16 +24,16 @@ Progress game functionality
 * [x] Restart
 
 #### Play enhanced
-* [x] Bonus - pad increase
+* [ ] Bonus - pad increase
 * [ ] Score for tile hit/clear
-* [x] Level (level definition format and loader)
-* [x] Multi levels
+* [ ] Level (level definition format and loader)
+* [ ] Multi levels
 * [ ] Vertical pad/pid
 
 #### Traz levels
-* [x] Pid/pad locations 
-* [x] Multi pad
-* [x] Multi pid
+* [ ] Pid/pad locations 
+* [ ] Multi pad
+* [ ] Multi pid
 * [ ] Team Dual player mode
 
 #### Traz game
@@ -44,8 +46,8 @@ Progress game functionality
 Extend variations after road map introduced first variant
 
 #### Tiles
-* [x] Solid
-* [x] Single hit
+* [ ] Solid
+* [ ] Single hit
 * [ ] Multi hit
 * [ ] Mirror [2x2, change Ball direction]
 * [ ] Large shot special behavior
@@ -60,8 +62,8 @@ Extend variations after road map introduced first variant
 #### Bonus
 * [ ] Pid as solid
 * [ ] Extra live
-* [x] Increase pad size [max size is pid size]
-* [x] Decrease pad size [min size is half standard size]
+* [ ] Increase pad size [max size is pid size]
+* [ ] Decrease pad size [min size is half standard size]
 * [ ] Shot single [large, 5x , hit count 10]
 * [ ] Shot dual [small, 5 sec, hit count 1]
 * [ ] Ball multi [random 1 or 2  extra balls]
@@ -71,28 +73,35 @@ Extend variations after road map introduced first variant
 
 # Development
 
-#### Requirements
+This project template combines Phaser 3 with [TypeScript](https://www.typescriptlang.org/) and uses [Rollup](https://rollupjs.org) for bundling.
 
-* Node.JS
+## Requirements
 
-#### Developing
+[Node.js](https://nodejs.org) is required to install dependencies and run scripts via `npm`.
 
-To start developing default node project commands:
+## Available Commands
 
-```
-npm install
-npm run serve
-```
+| Command         | Description                                                  |
+| --------------- | ------------------------------------------------------------ |
+| `npm install`   | Install project dependencies                                 |
+| `npm run watch` | Build project and open web server running project, watching for changes |
+| `npm run dev`   | Builds project and open web server, but do not watch for changes |
+| `npm run build` | Builds code bundle with production settings (minification, no source maps, etc..) |
 
-#### Tips & Tricks
+After cloning the repo, run `npm install` from your project directory. Then, you can start the local development.
 
-Use levels.js file config settings `GameDemoMode` and `GameLevels` to page through levels or set debug level sequence.
+## Configuring Rollup
 
+* Edit the file `rollup.config.dev.js` to edit the development build.
+* Edit the file `rollup.config.dist.js` to edit the distribution build.
 
 # Resources used
 
-* Color: ???
 * Art: https://opengameart.org/
-* CraftyJs
-  * [Intro with older version](http://buildnewgames.com/introduction-to-crafty/)
-  * [Beyond the basics](https://code.tutsplus.com/series/crafty-beyond-the-basics--cms-1132)
+
+* Phaser 3
+
+  * https://photonstorm.github.io/phaser3-docs/index.html
+  * https://github.com/photonstorm/phaser3-typescript-project-template
+  
+  
