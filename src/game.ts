@@ -19,6 +19,12 @@ export class Game extends Phaser.Game {
                 physics: {
                   default: 'arcade'
                 },
+                scale: {
+                    mode: Phaser.Scale.FIT,
+                    autoCenter: Phaser.Scale.CENTER_BOTH,
+                    autoRound: false
+                },
+               
                 scene: [ MainMenu, Level, GameOver ]
             }
         );
