@@ -32,7 +32,9 @@ export class Level extends Phaser.Scene
 
     preload ()
     {
-        this.load.atlas('assets', 'assets/tile-sprites.png', 'assets/tile-sprites.json');
+        this.load.atlas('assets',
+          Levels.levelDimension.tile.spriteImage, 
+          Levels.levelDimension.tile.spriteMap);
     }
 
     create ()
@@ -172,7 +174,7 @@ export class Level extends Phaser.Scene
 
     resetBall()
     {
-        this.message = this.add.text(this.levelLayout.midX(), this.levelLayout.midY(), "Get ready!");
+        this.message = this.add.text(this.levelLayout.midX(), this.levelLayout.midY(), "Get ready!", {font: '48px Courier', fill: '#FF2124' });
         this.ball.setVelocity(0);
         this.ball.setPosition(this.respawnX ,this.respawnY)
     }
@@ -191,7 +193,10 @@ export class Level extends Phaser.Scene
     updateLives(lives: integer)
     {
         this.Lives = lives;
-        if (!this.StatusText) this.StatusText = this.add.text(this.levelLayout.width() -100 , 10, '', { font: '16px Courier', fill: '#00ff00' });
+
+        let fontSize = this.levelLayout.tile.height * 1.5;
+        let font = fontSize + 'px Courier';
+        if (!this.StatusText) this.StatusText = this.add.text(this.levelLayout.width() -225 , 10, '', {font: font, fill: '#00ff00' });
         this.StatusText.setText(["Lives:" + this.Lives]);
     }
 

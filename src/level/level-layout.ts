@@ -16,8 +16,8 @@ export class LevelLayout
       this.rows = dimensions.height
 
       this.tile = {
-        width:  10,
-        height: 10
+        width: dimensions.tile.width,
+        height: dimensions.tile.heigth
       }
     }
 }

@@ -5,6 +5,18 @@ export let Levels = {
     "heightDoc": "Traz heigth 29 ~> 30",
     "height": 24,
 
+    "tile": {
+      "spriteImage": "assets/tile-sprites.png",
+      "spriteMap": "assets/tile-sprites.json",
+      "width": 10,
+      "heigth": 10,
+    },
+    "tile-new": {
+      "spriteImage": "assets/tile-sprites-2.png",
+      "spriteMap": "assets/tile-sprites-2.json",
+      "width": 32,
+      "heigth": 32,
+    }
   },
 
   "Note1": "Select a set of levels",
