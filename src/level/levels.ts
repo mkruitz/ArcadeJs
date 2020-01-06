@@ -5,13 +5,13 @@ export let Levels = {
     "heightDoc": "Traz heigth 29 ~> 30",
     "height": 24,
 
-    "tile": {
+    "tile-classic": {
       "spriteImage": "assets/tile-sprites.png",
       "spriteMap": "assets/tile-sprites.json",
       "width": 10,
       "heigth": 10,
     },
-    "tile-new": {
+    "tile": {
       "spriteImage": "assets/tile-sprites-2.png",
       "spriteMap": "assets/tile-sprites-2.json",
       "width": 32,
