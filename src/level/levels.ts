@@ -1,7 +1,7 @@
 export let Levels = {
   "levelDimension": {
-    "widthDoc": "Traz width = 19 X 2 ~> 40", 
-    "width": 40, 
+    "widthDoc": "Traz width = 19 X 2 ~> 40",
+    "width": 40,
     "heightDoc": "Traz heigth 29 ~> 30",
     "height": 24,
 
@@ -20,16 +20,16 @@ export let Levels = {
   },
 
   "Note1": "Select a set of levels",
-  "DemoLevels":  ["LevelDemoAssets", "LevelSingleHitComplete", "Level1", "Level2", "Level3"],
+  "DemoLevels": ["LevelDemoAssets", "LevelSingleHitComplete", "Level1", "Level2", "Level3"],
   "DebugLevels": ["LevelSingleHitComplete", "Level1", "LevelDemoAssets"],
-  "TrazLevels":  ["Level1", "Level2", "Level3"],
+  "TrazLevels": ["Level1", "Level2", "Level3"],
 
   "Note2": "Demo mode true to click through levels",
   "GameDemoMode": false,
   "GameLevels": "TrazLevels",
 
   "Note 3": "TileCodeFormat: width - height - type - subtype - type specific1 - type specific2 ",
-  "Note 4": "TileCodeDef: See ElementCode in game-definition for element code for type and subtype", 
+  "Note 4": "TileCodeDef: See ElementCode in game-definition for element code for type and subtype",
 
   "LevelDemoAssets" : [ 
          0,      0,      0,      0,      0,      0,      0,      0,      0,      0,      0,      0,      0,      0,      0,      0,      0,      0,      0,      0,      0,      0,      0,      0,      0,      0,      0,      0,      0,      0,      0,      0,      0,      0,      0,      0,      0,      0,      0,      0,

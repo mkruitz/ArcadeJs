@@ -11,21 +11,21 @@ export class Game extends Phaser.Game {
         let levelLayout = new LevelLayout(Levels.levelDimension);
 
         super(
-             {
+            {
                 type: Phaser.WEBGL,
                 backgroundColor: '#DDDDDD',
                 width: levelLayout.width(),
-                height:  levelLayout.height(),
+                height: levelLayout.height(),
                 physics: {
-                  default: 'arcade'
+                    default: 'arcade'
                 },
                 scale: {
                     mode: Phaser.Scale.FIT,
                     autoCenter: Phaser.Scale.CENTER_BOTH,
                     autoRound: false
                 },
-               
-                scene: [ MainMenu, Level, GameOver ]
+
+                scene: [MainMenu, Level, GameOver]
             }
         );
     }
