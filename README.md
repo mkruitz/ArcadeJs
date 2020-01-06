@@ -97,7 +97,10 @@ After cloning the repo, run `npm install` from your project directory. Then, you
 
 # Resources used
 
-* Art: https://opengameart.org/
+* Art: 
+
+  * https://opengameart.org/
+  * http://pixelgameart.org/web/
 
 * Phaser 3
 
