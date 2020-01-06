@@ -42,7 +42,7 @@ export class GameOver extends Phaser.Scene {
 
         console.log('%c gameover ', 'background: green; color: white; display: block;');
 
-        let title = this.add.dynamicBitmapText(10, 90, 'ice', 'ReTrazed', 80)
+        let title = this.add.dynamicBitmapText(250, 300, 'ice', 'ReTrazed', 180)
         
         title.setInteractive();
 
