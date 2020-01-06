@@ -14,7 +14,7 @@ export class MainMenu extends Phaser.Scene {
     create () {
         console.log('%c mainmenu ', 'background: green; color: white; display: block;');
 
-        let title = this.add.dynamicBitmapText(15, 90, 'ice', 'ReTrazed', 80)
+        let title = this.add.dynamicBitmapText(250, 300, 'ice', 'ReTrazed', 180)
         
         title.setInteractive();
 
