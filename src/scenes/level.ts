@@ -5,6 +5,7 @@ import { Levels } from '../level/levels';
 export class Level extends Phaser.Scene {
     ball: any;
     paddle: any;
+    bonus: any;
     bounceObjects: any;
     ScoreObjects: any;
 
@@ -43,6 +44,9 @@ export class Level extends Phaser.Scene {
         this.createTiles(Levels.Level1);
 
         this.physics.add.collider(this.ball, this.bounceObjects, this.hitBounceObject, undefined, this);
+        let c = this.physics.add.collider(this.ball, this.bonus, this.hitBonusObject, undefined, this);
+        c.overlapOnly = true;
+        
         this.physics.add.collider(this.ball, this.paddle, this.hitPaddle, undefined, this);
 
         this.resetBall();
@@ -83,6 +87,12 @@ export class Level extends Phaser.Scene {
         }
     }
 
+    hitBonusObject(ball: any, bonus: any) {
+        bonus.disableBody(true, true);
+        this.events.emit("Bonus",bonus.getData("BonusItem"));
+        this.paddle.physics.
+    }
+
     hitPaddle(ball: any, paddle: any) {
         var diff = 0;
 
@@ -119,6 +129,8 @@ export class Level extends Phaser.Scene {
 
                     } else if (element.type === ElementCode.Bonus) {
                         this.physics.add.image(this.levelLayout.coordX(w), this.levelLayout.coordY(h), 'assets', 'bonus');
+                        this.bonus = this.physics.add.sprite(this.levelLayout.coordX(w), this.levelLayout.coordY(h), 'assets', 'bonus');
+                        this.physics.world.add(this.bonus);
                     } else if (element.type === ElementCode.Pad) {
                         this.paddle = this.physics.add.image(this.levelLayout.coordX(w), this.levelLayout.coordY(h), 'assets', 'pad_' + element.subType).setImmovable();
                     }
