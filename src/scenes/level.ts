@@ -90,7 +90,6 @@ export class Level extends Phaser.Scene {
     hitBonusObject(ball: any, bonus: any) {
         bonus.disableBody(true, true);
         this.events.emit("Bonus",bonus.getData("BonusItem"));
-        this.paddle.physics.
     }
 
     hitPaddle(ball: any, paddle: any) {
@@ -128,7 +127,6 @@ export class Level extends Phaser.Scene {
 
 
                     } else if (element.type === ElementCode.Bonus) {
-                        this.physics.add.image(this.levelLayout.coordX(w), this.levelLayout.coordY(h), 'assets', 'bonus');
                         this.bonus = this.physics.add.sprite(this.levelLayout.coordX(w), this.levelLayout.coordY(h), 'assets', 'bonus');
                         this.physics.world.add(this.bonus);
                     } else if (element.type === ElementCode.Pad) {
